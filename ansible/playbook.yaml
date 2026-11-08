@@ -1,0 +1,8 @@
+- name: Setup xray and vless config
+  hosts: host
+  become: false
+  gather_facts: false
+  roles:
+    - prepare
+    
+    
