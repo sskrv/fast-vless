@@ -1,5 +1,11 @@
 - name: Install xray
-  ansible.builtin.script:
-    cmd: bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+  ansible.builtin.shell: wget https://github.com/XTLS/Xray-install/raw/main/install-release.sh -O $HOME/install-xray.sh && chmod +x $HOME/install-xray.sh
+  args:
+    creates: $HOME/install-xray.sh
+  become: true
+
+- name: Launch xray
+  ansible.builtin.shell: bash $HOME/install-xray.sh
+  args:  
     creates: /etc/systemd/system/xray.service
   become: true
