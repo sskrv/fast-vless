@@ -1,0 +1,5 @@
+- name: Install xray
+  ansible.builtin.script:
+    cmd: bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+    creates: /etc/systemd/system/xray.service
+  become: true
